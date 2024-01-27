@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type the Name of the Planet</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Raleway;
+            text-align: center;
+            background: linear-gradient(117deg, #22335D 19.95%, #413490 99.99%, #1B1A4E 100%);
+            color: #fff; /* Set text color to white for better contrast */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /*horizontal*/
+        }
+
+        nav {
+            display: flex;
+            width: 1440px;
+            padding: 25px 50px;
+            /*justify-content: space-between;*/
+            align-items: center;
+            background: #1F1D2B;
+            justify-content: space-between;
+            box-sizing: border-box; /* Include padding in width calculation */
+            position: fixed; /* Fix the navigation bar at the top */
+            top: 0; /* Position it at the top of the viewport */
+            left: 0; /* Align the left edge of the nav bar to the left of the viewport */
+        
+        
+        }
+
+        nav a { /* styles for <a> elements inside <nav> */
+            color: #fff;
+            text-decoration: none;
+            font-family: Raleway;
+            margin: 0 60px; /* Increased margin between nav items */
+            font-size: 18px; /* Increased font size */
+            margin-top: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+
+        }
+
+        .planet-container {
+            width: 215px;
+            margin: 50px; /*between planet containers*/
+            scroll-snap-align: start;
+        }
+
+        img {
+            width: 100%; /*img span width of container*/
+            height: 200px; /*maintain aspect ratio*/
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .check {
+            color: green;
+            font-size: 50px;
+            margin-top: 10px;
+            display: none; /*initially hides elements*/
+        }
+
+        /*title*/
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#">OrbitEd</a>
+        <a href="#">Earth</a>
+        <a href="#">Moon</a>
+        <a href="#">Stars</a>
+        <a href="#">Solar System</a>
+        <a href="#">|</a>
+        <a href="#">Games</a>
+    </nav>
+
+    <img src="starfallgif.gif" alt="GIF Image" style="width: 100%; height: 15vh; object-fit: cover;">
+
+    <h1>Type the Name of the Planet</h1>
+    <h2>Type the name of the planet directly under it. If you are correct, a green checkmark will appear!</h2>
+
+    <div class="container">
+        <div class="planet-container">
+            <img src="mercury.png" alt="Mercury">
+            <label for="mercuryInput">Type the name of the planet:</label> 
+            <input type="text" id="mercuryInput" oninput="checkName('mercuryInput', 'mercury', 'mercuryCheck')"> 
+            <span class="check" id="mercuryCheck">✔</span> 
+        </div>
+
+        <div class="planet-container">
+            <img src="venus.png" alt="Venus">
+            <label for="venusInput">Type the name of the planet:</label>
+            <input type="text" id="venusInput" oninput="checkName('venusInput', 'venus', 'venusCheck')">
+            <span class="check" id="venusCheck">✔</span>
+        </div>
+
+        <div class="planet-container">
+            <img src="earth.png" alt="Earth">
+            <label for="earthInput">Type the name of the planet:</label>
+            <input type="text" id="earthInput" oninput="checkName('earthInput', 'earth', 'earthCheck')">
+            <span class="check" id="earthCheck">✔</span>
+        </div>
+
+        <div class="planet-container">
+            <img src="mars.jpg" alt="Mars">
+            <label for="marsInput">Type the name of the planet:</label>
+            <input type="text" id="marsInput" oninput="checkName('marsInput', 'mars', 'marsCheck')">
+            <span class="check" id="marsCheck">✔</span>
+        </div>
+
+        <div class="planet-container">
+            <img src="jupiter.png" alt="Jupiter">
+            <label for="jupiterInput">Type the name of the planet:</label>
+            <input type="text" id="jupiterInput" oninput="checkName('jupiterInput', 'jupiter', 'jupiterCheck')">
+            <span class="check" id="jupiterCheck">✔</span>
+        </div>
+
+        <div class="planet-container">
+            <img src="neptune.jpg" alt="Neptune">
+            <label for="neptuneInput">Type the name of the planet:</label>
+            <input type="text" id="neptuneInput" oninput="checkName('neptuneInput', 'neptune', 'neptuneCheck')">
+            <span class="check" id="neptuneCheck">✔</span>
+        </div>
+
+        <div class="planet-container">
+            <img src="uranus.png" alt="Uranus">
+            <label for="uranusInput">Type the name of the planet:</label>
+            <input type="text" id="uranusInput" oninput="checkName('uranusInput', 'uranus', 'uranusCheck')">
+            <span class="check" id="uranusCheck">✔</span>
+        </div>
+
+        <div class="planet-container">
+            <img src="saturn.png" alt="Saturn">
+            <label for="saturnInput">Type the name of the planet:</label>
+            <input type="text" id="saturnInput" oninput="checkName('saturnInput', 'saturn', 'saturnCheck')">
+            <span class="check" id="saturnCheck">✔</span>
+        </div>
+
+    </div>
+
+    <script>
+        function checkName(inputId, expectedName, checkId) { /*compare two, update checkId if needed*/
+            var input = document.getElementById(inputId); /*grab the element’s input id in the HTML*/
+            var check = document.getElementById(checkId);
+
+            if (input.value.toLowerCase() === expectedName.toLowerCase()) { /*if current content is equal to expected*/
+                check.style.display = "inline"; /*set display style*/
+            } else {
+                check.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
